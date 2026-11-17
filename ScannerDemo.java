@@ -13,8 +13,8 @@ public class ScannerDemo {
 		TokenStream ts = new TokenStream(file1);
 		System.out.println(file1);
 		while (!ts.isEndofFile()) {
-			// TO BE COMPLETED
-			// System.out.println("Token " + counter++ + " - Type: " + tk.getType() + " - Value: " + tk.getValue());
+			Token tk = ts.nextToken();
+			System.out.println("Token " + counter++ + " - Type: " + tk.getType() + " - Value: " + tk.getValue());
 		}
 	}
 }
