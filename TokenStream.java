@@ -56,9 +56,11 @@ public class TokenStream {
 			nextChar = readChar();
 			if (nextChar == '/') { // If / is followed by another /
 				// skip rest of line - it's a comment.
-				// TODO TO BE COMPLETED
-				// look for <cr>, <lf>, <ff>
-
+				while (!isEndOfLine(nextChar) && !isEof) {
+					nextChar = readChar();
+				}
+				skipWhiteSpace();
+ 
 			} else {
 				// A slash followed by anything else must be an operator.
 				t.setValue("/");
@@ -75,10 +77,28 @@ public class TokenStream {
 			switch (nextChar) {
 			// TODO TO BE COMPLETED WHERE NEEDED
 			case '<':
+				nextChar = readChar();
+				if (nextChar == '=') {
+					t.setValue(t.getValue() + nextChar);
+					nextChar = readChar();
+				}
+				return t;
 				// <=
 			case '>':
+				nextChar = readChar();
+				if (nextChar == '=') {
+					t.setValue(t.getValue() + nextChar);
+					nextChar = readChar();
+				}
+				return t;
 				// >=
 			case '=':
+				nextChar = readChar();
+				if (nextChar == '=') {
+					t.setValue(t.getValue() + nextChar);
+					nextChar = readChar();
+				}
+				return t;
 				// ==
 			case '!':
 				// !=
@@ -118,7 +138,8 @@ public class TokenStream {
 		// Then check for a separator
 		if (isSeparator(nextChar)) {
 			t.setType("Separator");
-			// TODO TO BE COMPLETED
+			t.setValue(t.getValue() + nextChar);
+			nextChar = readChar();
 			return t;
 		}
 
