@@ -75,7 +75,7 @@ public class TokenStream {
 			t.setType("Operator");
 			t.setValue(t.getValue() + nextChar);
 			switch (nextChar) {
-			// TODO TO BE COMPLETED WHERE NEEDED
+			
 			case '<':
 				nextChar = readChar();
 				if (nextChar == '=') {
@@ -210,8 +210,7 @@ public class TokenStream {
 		return (char) i;
 	}
 
-	private boolean isKeyword(String s) {
-		// TODO TO BE COMPLETED 
+	private boolean isKeyword(String s) { 
 		return (s.equals("void") || s.equals("main") || s.equals("if") || s.equals("else") || s.equals("while") || s.equals("int") || s.equals("boolean"));
 	}
 
@@ -235,13 +234,11 @@ public class TokenStream {
 	}
 
 	private boolean isSeparator(char c) {
-		// TODO TO BE COMPLETED
 		return (c == '(' || c== ')' || c == '{' || c == '}' || c == ',' || c == ';');
 	}
 
 	private boolean isOperator(char c) {
 		// Checks for characters that start operators
-		// TODO TO BE COMPLETED
 		return (c == '+' || c == '-' || c == '=' || c == '*' || c == '<' || c == '>' || c == '/' || c == '!' || c == '&' || c == '|');
 	}
 
@@ -250,7 +247,6 @@ public class TokenStream {
 	}
 
 	private boolean isDigit(char c) {
-		// TODO TO BE COMPLETED
 		return (c == '0' || c =='1' || c ==  '2' || c == '3' || c == '4' || c == '5' || c =='6' || c == '7' || c == '8' || c == '9');
 	}
 
