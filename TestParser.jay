@@ -1,4 +1,49 @@
-main{
+void main(){
     int i;
     i = 7;
+}
+
+
+void main(){
+}
+
+
+void main(){
+    int a,b,c;
+    a = 60;
+    b = 9;
+    c = a + b * (a-67);
+}
+
+
+void main(){
+    boolean start, readyToRun, end;
+    start = true;
+    readyToRun = true;
+    end = !readyToRun;
+}
+
+
+void main(){
+    int a,b;
+    a = 69;
+    b = 67;
+
+    if (a>b){
+        a = a+b;
+    }
+}
+
+
+void main(){
+    int i,k;
+
+    boolean runner = true;
+    i =69; 
+    k = 95;
+
+    while(i<k && runner){
+        i = i+1;
+        if (i == 90) runner = false;
+    }
 }

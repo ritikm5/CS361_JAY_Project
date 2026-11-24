@@ -7,14 +7,19 @@ public class ParserDemo {
 		TokenStream tStream = new TokenStream("/Users/ritikjai/Desktop/Univetsity Stuff/Pace University/Classes/CS 361/CS361_JAY_Project/TestParser.jay");
 
 		if(tStream.isEndofFile()) {
-			System.out.println("JAY file is empty.");
+			System.out.println("JAY file is empty or unable to read.");
 			return;
 		}
 
 		ConcreteSyntax cSyntax = new ConcreteSyntax(tStream);
-		Program p = cSyntax.program();
-		System.out.println(p.display());
-		System.out.println("test");
+		int count =1;
+
+		while(cSyntax.token != null) {
+			System.out.println("------------");
+			System.out.println(" Test Run " + count++);
+			Program p = cSyntax.program();
+			System.out.println(p.display());
+		}
 
 	}
 

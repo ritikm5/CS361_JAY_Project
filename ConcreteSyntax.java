@@ -47,14 +47,22 @@ public class ConcreteSyntax {
 		// TODO TO BE COMPLETED 
 		// Program --> main '{' Declarations Statements '}'
 		String[] header = {"main"};
+		if (token.getValue().equals("void")) header = new String[] {"void", "main"};
 		Program p = new Program();
+
 		for (int i = 0; i < header.length; i++)
 			match(header[i]);
-			// bypass " main { "
-			match("{");
-			p.decpart = declarations();
-			p.body = statements();
-			match("}");
+
+		if (token.getValue().equals("(")) {
+			match("(");
+			match(")");
+		}
+		
+		// bypass " main { "
+		match("{");
+		p.decpart = declarations();
+		p.body = statements();
+		match("}");
 
 		return p;
 	}
@@ -154,7 +162,7 @@ public class ConcreteSyntax {
 			a.target = new Variable();
 			a.target.id = token.getValue();
 			token = input.nextToken();
-			match(":=");
+			match("=");
 			a.source = expression();
 			match(";");
 		} else
@@ -291,6 +299,17 @@ public class ConcreteSyntax {
 		// IfStatement --> if ( Expression ) Statement { else Statement }opt
 		Conditional c = new Conditional();
 		// TODO TO BE COMPLETED
+
+		match("if");
+		match("(");
+		c.test = expression();
+		match(")");
+		c.thenbranch = statement();
+		if (token.getValue().equals("else")) {
+			match("else");
+			c.elsebranch = statement();
+		}
+
 		return c;
 	}
 
@@ -298,6 +317,13 @@ public class ConcreteSyntax {
 		// WhileStatement --> while ( Expression ) Statement
 		Loop l = new Loop();
 		// TODO TO BE COMPLETED
+
+		match("while");
+		match("(");
+		l.test = expression();
+		match(")");
+		l.body = statement();
+
 		return l;
 	}
 
