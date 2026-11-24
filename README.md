@@ -1,4 +1,4 @@
-CS361_JAY_Project
+##CS361_JAY_Project
 
 **Team Members:** Karlensky P and Ritik J
 **Team:** 7  
