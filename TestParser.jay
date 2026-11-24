@@ -37,8 +37,9 @@ void main(){
 
 void main(){
     int i,k;
-
-    boolean runner = true;
+    boolean runner;
+    
+    runner = true;
     i =69; 
     k = 95;
 
